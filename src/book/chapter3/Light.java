@@ -1,4 +1,4 @@
-package chapter3;
+package book.chapter3;
 
 public class Light {
     public static void main(String[] args) {

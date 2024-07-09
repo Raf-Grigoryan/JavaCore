@@ -1,4 +1,4 @@
-package chapter2;
+package book.chapter2;
 
 public class BlockTest {
     public static void main(String[] args) {
