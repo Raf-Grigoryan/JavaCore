@@ -83,7 +83,7 @@ public class ArrayUtil {
         if (array.length <= 2) {
             System.out.println("Can't print middle values.");
         } else {
-            int index = array.length / 2;
+            int index = array.length / 2 - 1;
             if (array.length % 2 == 0) {
                 System.out.println(array[index] + " " + array[++index]);
             } else {
