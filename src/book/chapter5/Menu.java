@@ -1,11 +1,11 @@
 package book.chapter5;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Menu {
 
 
-    public static void main(String[] args) throws java.io.IOException {
+    public static void main(String[] args) throws IOException {
         char choice;
         do {
             System.out.println("Cпpaвкa по оператору:");
@@ -47,6 +47,7 @@ public class Menu {
                 System.out.println("for(нициaлизaция; условие; итерация){");
                 System.out.println("оператор;}");
             }
+            default -> throw new IllegalStateException("Unexpected value: " + choice);
         }
     }
 }
