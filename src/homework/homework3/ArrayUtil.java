@@ -3,16 +3,16 @@ package homework.homework3;
 public class ArrayUtil {
     public static void main(String[] args) {
         int[] numbers = {1, 6, 3, 9, 15, 52, -3, 5, 8};
-        // printArray(numbers);
-        //printFirstElement(numbers);
-        //printLastElement(numbers);
-        //printLengthOfArray(numbers);
-        // smallestNumberOfArray(numbers);
-        // evenNumbersCount(numbers);
-        //oddNumbersCount(numbers);
-        // arrayNumbersSum(numbers);
-        //averageOfArray(numbers);
-        //printMiddleElement(numbers);
+        printArray(numbers);
+        printFirstElement(numbers);
+        printLastElement(numbers);
+        printLengthOfArray(numbers);
+        smallestNumberOfArray(numbers);
+        evenNumbersCount(numbers);
+        oddNumbersCount(numbers);
+        arrayNumbersSum(numbers);
+        averageOfArray(numbers);
+        printMiddleElement(numbers);
     }
 
     private static void printArray(int[] array) {
