@@ -35,7 +35,7 @@ public class ArraySort {
                 }
             }
         }
-        System.out.println("Min To MAX");
+        System.out.println("MIN To MAX");
         for (int i : array) {
             System.out.print(i + " ");
         }
