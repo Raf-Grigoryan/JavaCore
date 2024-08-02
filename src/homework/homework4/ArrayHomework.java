@@ -54,6 +54,7 @@ public class ArrayHomework {
             for (int j = 0; j < vowelLetter.length; j++) {
                 if (array[i] == vowelLetter[j]) {
                     vowelCount++;
+                    break;
                 }
             }
         }
