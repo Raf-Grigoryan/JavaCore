@@ -25,7 +25,7 @@ public class BraceChecker {
                     } else {
                         char openedSymbol = stack.pop();
                         if (!isMatchingPair(openedSymbol, currentChar)) {
-                            System.out.println("Error: Opening bracket '" + openedSymbol + "' does not match closing bracket '" + currentChar + "' at index " + i + ".");
+                            System.out.println("Error: Opening bracket '" + openedSymbol + "' does not match closing bracket '" + currentChar + "' at index " + i);
                         }
                     }
                 }
@@ -33,11 +33,15 @@ public class BraceChecker {
         }
 
         while (!stack.isEmpty()) {
-            System.out.println("Error: Opening bracket '" + stack.pop() + "' at index " + (stack.getTopIndex() + 1) + " has no matching closing bracket.");
+            System.out.println("Error: Opening bracket '" + stack.pop() + "' at index " + (stack.getTopIndex() + 1) + " has no matching closing bracket");
         }
     }
 
     private boolean isMatchingPair(char open, char close) {
         return (open == '(' && close == ')') || (open == '[' && close == ']') || (open == '{' && close == '}');
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
