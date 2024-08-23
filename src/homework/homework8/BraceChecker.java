@@ -1,10 +1,8 @@
-package homework.homework7and8;
+package homework.homework8;
 
 public class BraceChecker {
     private Stack stack = new Stack();
     private String text;
-
-
 
     public String getText() {
         return text;
@@ -16,15 +14,15 @@ public class BraceChecker {
                 char currentChar = text.charAt(i);
                 switch (currentChar) {
                     case '(', '[', '{' -> {
-                        stack.push(currentChar);
+                        stack.push(new Brace(currentChar, i));
                     }
                     case ')', ']', '}' -> {
                         if (stack.isEmpty()) {
                             System.out.println("Error: Closing bracket '" + currentChar + "' at index " + i + " has no matching opening bracket.");
                         } else {
-                            char openedSymbol = stack.pop();
-                            if (!isMatchingPair(openedSymbol, currentChar)) {
-                                System.out.println("Error: Opening bracket '" + openedSymbol + "' does not match closing bracket '" + currentChar + "' at index " + i);
+                            Brace openedBrace = stack.pop();
+                            if (!isMatchingPair(openedBrace.getBrace(), currentChar)) {
+                                System.out.println("Error: Opening bracket '" + openedBrace.getBrace() + "' at index " + openedBrace.getIndex() + " does not match closing bracket '" + currentChar + "' at index " + i);
                             }
                         }
                     }
@@ -32,10 +30,10 @@ public class BraceChecker {
             }
 
             while (!stack.isEmpty()) {
-                System.out.println("Error: Opening bracket '" + stack.pop() + "' at index " + (stack.getTopIndex() + 1) + " has no matching closing bracket");
+                Brace unclosedBrace = stack.pop();
+                System.out.println("Error: Opening bracket '" + unclosedBrace.getBrace() + "' at index " + unclosedBrace.getIndex() + " has no matching closing bracket.");
             }
         }
-
     }
 
     private boolean isMatchingPair(char open, char close) {
