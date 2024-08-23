@@ -1,4 +1,4 @@
-package homework.homework7;
+package homework.homework7and8;
 
 public class Stack {
     private char[] stck = new char[10];
