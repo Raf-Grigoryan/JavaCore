@@ -46,9 +46,7 @@ public class Library {
     }
 
     public static void printAllBooks() {
-        for (Book book : books) {
-            book.bookInformation();
-        }
+
     }
 
     public static void addBook(Book book) {
