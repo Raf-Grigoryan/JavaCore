@@ -5,7 +5,7 @@ public class BookStorage {
     private int size = -1;
 
     public void add(Book book) {
-        if (size  == books.length) {
+        if (size == books.length) {
             extend();
         }
         books[++size] = book;
@@ -42,7 +42,7 @@ public class BookStorage {
         }
     }
 
-    public void printBooksByPrice(int price1, int price2) {
+    public void printBooksByPrice(double price1, double price2) {
         if (price1 > price2) {
             System.out.println("The first price cannot be more than the second!");
         } else {
@@ -55,4 +55,30 @@ public class BookStorage {
 
     }
 
+    public void deleteBookById(String id) {
+        boolean found = false;
+        if (size < 0) {
+            System.out.println("Storage is empty");
+        } else {
+            for (int i = 0; i <= size; i++) {
+                if (books[i].getId().equals(id)) {
+                    found = true;
+                    for (int j = i; j < size; j++) {
+                        books[j] = books[j + 1];
+                    }
+                    books[size] = null;
+                    size--;
+                    System.out.println("Book with ID " + id + " has been deleted.");
+                    break;
+                }
+            }
+
+            if (!found) {
+                System.out.println("Book with ID " + id + " not found.");
+            }
+        }
+    }
+
 }
+
+

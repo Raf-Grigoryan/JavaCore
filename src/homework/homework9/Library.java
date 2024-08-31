@@ -12,6 +12,7 @@ public class Library {
     private static final String BOOK_BY_NAME = "3";
     private static final String UPDATE_BOOK = "4";
     private static final String SEARCH_BY_PRICE = "5";
+    private static final String DELETE_BOOK = "6";
 
     public static void main(String[] args) {
         process();
@@ -32,10 +33,17 @@ public class Library {
                 case BOOK_BY_NAME -> searchBookByName();
                 case UPDATE_BOOK -> updateBookById();
                 case SEARCH_BY_PRICE -> searchBookByPrice();
+                case DELETE_BOOK -> deleteBookById();
                 default -> System.out.println("Wrong command please try again!");
 
             }
         }
+    }
+
+    private static void deleteBookById() {
+        System.out.println("Please input id");
+        String id = scanner.nextLine();
+        bookStorage.deleteBookById(id);
     }
 
     private static void commands() {
@@ -45,7 +53,7 @@ public class Library {
         System.out.println("Please input " + BOOK_BY_NAME + " for search book by name");
         System.out.println("Please input " + UPDATE_BOOK + " for update book");
         System.out.println("Please input " + SEARCH_BY_PRICE + " for search by price");
-
+        System.out.println("Pelase input " + DELETE_BOOK + " for delete book by id");
     }
 
     private static void addBook() {
@@ -115,9 +123,9 @@ public class Library {
 
     private static void searchBookByPrice() {
         System.out.println("Please input first price");
-        int price1 = Integer.parseInt(scanner.nextLine());
+        double price1 = Double.parseDouble(scanner.nextLine());
         System.out.println("Please input second price");
-        int price2 = Integer.parseInt(scanner.nextLine());
+        double price2 = Double.parseDouble(scanner.nextLine());
         bookStorage.printBooksByPrice(price1, price2);
     }
 
