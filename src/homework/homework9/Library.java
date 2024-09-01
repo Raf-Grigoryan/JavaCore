@@ -3,16 +3,10 @@ package homework.homework9;
 import java.util.Scanner;
 
 
-public class Library {
+public class Library implements Commands{
     private static final Scanner scanner = new Scanner(System.in);
     private static final BookStorage bookStorage = new BookStorage();
-    private static final String EXIT = "0";
-    private static final String ADD_BOOK = "1";
-    private static final String PRINT_ALL_BOOKS = "2";
-    private static final String BOOK_BY_NAME = "3";
-    private static final String UPDATE_BOOK = "4";
-    private static final String SEARCH_BY_PRICE = "5";
-    private static final String DELETE_BOOK = "6";
+
 
     public static void main(String[] args) {
         process();
@@ -21,7 +15,7 @@ public class Library {
     private static void process() {
         boolean isRun = true;
         while (isRun) {
-            commands();
+            Commands.commands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT -> {
@@ -46,15 +40,7 @@ public class Library {
         bookStorage.deleteBookById(id);
     }
 
-    private static void commands() {
-        System.out.println("Please input " + EXIT + " for exit");
-        System.out.println("Please input " + ADD_BOOK + " for add book");
-        System.out.println("Please input " + PRINT_ALL_BOOKS + " for print books");
-        System.out.println("Please input " + BOOK_BY_NAME + " for search book by name");
-        System.out.println("Please input " + UPDATE_BOOK + " for update book");
-        System.out.println("Please input " + SEARCH_BY_PRICE + " for search by price");
-        System.out.println("Pelase input " + DELETE_BOOK + " for delete book by id");
-    }
+
 
     private static void addBook() {
         System.out.println("Please input book id");
