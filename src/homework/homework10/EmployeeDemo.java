@@ -28,22 +28,25 @@ public class EmployeeDemo implements Commands {
     }
 
 
-
-
     private static void addEmployee() {
-        System.out.println("Please input employee name");
-        String name = scanner.nextLine();
-        System.out.println("Please input employee surname");
-        String surname = scanner.nextLine();
         System.out.println("Please input employee id");
         String employeeID = scanner.nextLine();
-        System.out.println("Please input employee company");
-        String company = scanner.nextLine();
-        System.out.println("Please input employee position");
-        String position = scanner.nextLine();
-        System.out.println("Please input employee salary");
-        double salary = Double.parseDouble(scanner.nextLine());
-        employeeStorage.addEmployee(new Employee(name, surname, employeeID, company, position, salary));
+        if (employeeStorage.searchEmployeeById(employeeID) == null) {
+            System.out.println("Please input employee name");
+            String name = scanner.nextLine();
+            System.out.println("Please input employee surname");
+            String surname = scanner.nextLine();
+            System.out.println("Please input employee company");
+            String company = scanner.nextLine();
+            System.out.println("Please input employee position");
+            String position = scanner.nextLine();
+            System.out.println("Please input employee salary");
+            double salary = Double.parseDouble(scanner.nextLine());
+            employeeStorage.addEmployee(new Employee(name, surname, employeeID, company, position, salary));
+        } else {
+            System.out.println("Employee id already exists");
+        }
+
     }
 
     private static void searchByID() {

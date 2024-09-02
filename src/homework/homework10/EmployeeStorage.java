@@ -5,15 +5,9 @@ public class EmployeeStorage {
     private int size = -1;
 
     public void addEmployee(Employee employee) {
-        if (searchEmployeeById(employee.getEmployeeId()) != null) {
-            System.out.println("Employee id already exists");
-            return;
-        }
-
         if (size + 1 == employees.length) {
             extend();
         }
-
         employees[++size] = employee;
     }
 
