@@ -15,7 +15,7 @@ public class EmployeeDemo implements Commands {
     private static void process() {
         boolean isRun = true;
         while (isRun) {
-            commands();
+            Commands.commands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT -> isRun = false;
@@ -28,12 +28,7 @@ public class EmployeeDemo implements Commands {
     }
 
 
-    private static void commands() {
-        System.out.println("Please input " + EXIT + " for exit");
-        System.out.println("Please input " + ADD_EMPLOYEE + " for add employee");
-        System.out.println("Please input " + SEARCH_BY_ID + " for search employee by id");
-        System.out.println("Please input " + SEARCH_BY_COMPANY + " for search employee by company");
-    }
+
 
     private static void addEmployee() {
         System.out.println("Please input employee name");
