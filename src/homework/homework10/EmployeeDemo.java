@@ -1,6 +1,6 @@
 package homework.homework10;
 
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class EmployeeDemo implements Commands {

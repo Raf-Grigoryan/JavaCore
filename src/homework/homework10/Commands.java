@@ -10,6 +10,7 @@ public interface Commands {
     static void commands() {
         System.out.println("Please input " + EXIT + " for exit");
         System.out.println("Please input " + ADD_EMPLOYEE + " for add employee");
+        System.out.println("Please input " + PRINT_EMPLOYEES + " for print all employees");
         System.out.println("Please input " + SEARCH_BY_ID + " for search employee by id");
         System.out.println("Please input " + SEARCH_BY_COMPANY + " for search employee by company");
     }
