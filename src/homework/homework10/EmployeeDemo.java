@@ -123,13 +123,12 @@ public class EmployeeDemo implements Commands {
         String employeeId = scanner.nextLine();
         if (employeeId != null && !employeeId.isEmpty()) {
             if (employeeStorage.searchEmployeeById(employeeId) != null) {
-            employeeStorage.deleteById(employeeId);
-            }else {
+                employeeStorage.deleteById(employeeId);
+            } else {
                 System.out.println("Employee does not exist!");
             }
         }
     }
-
 
 
 }
