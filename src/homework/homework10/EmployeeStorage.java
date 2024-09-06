@@ -86,23 +86,25 @@ public class EmployeeStorage {
     }
 
     public Employee findEmployeeWithMaxSalary() {
-        if (size > -1) {
-            Employee maxSalaryEmployee = employees[0];
-            for (int i = 1; i <= size; i++) {
-                if (employees[i].getSalary() > maxSalaryEmployee.getSalary()) {
-                    maxSalaryEmployee = employees[i];
-                }
-            }
-        } else {
-            System.out.println("Employee list is empty!");
+        if (size < -1) {
+            System.out.println("Employee list is empty");
+            return null;
         }
-        return null;
+        Employee maxSalaryEmployee = employees[0];
+        for (int i = 0; i <= size; i++) {
+            if (employees[i].getSalary() > maxSalaryEmployee.getSalary()) {
+                maxSalaryEmployee = employees[i];
+            }
+        }
+        return maxSalaryEmployee;
     }
 
     public void clearAllEmployees() {
-        Employee[] tmp = new Employee[10];
-        employees = tmp;
-        size = -1;
+        if (size > -1){
+            employees = new Employee[10];
+            size = -1;
+        }
     }
+
 
 }

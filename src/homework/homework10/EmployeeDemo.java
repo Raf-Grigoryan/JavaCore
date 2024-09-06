@@ -27,6 +27,11 @@ public class EmployeeDemo implements Commands {
                 case SEARCH_BY_SALARY -> searchBySalary();
                 case UPDATE_BY_ID -> updateEmployeeById();
                 case DELETE_BY_ID -> deleteById();
+                case EMPLOYEES_WITH_SALARY_ABOVE -> searchEmployeeByAboveSalary();
+                case Employee_WITH_MAX_SALARY -> searchEmployeeWithMaxSalary();
+                case EMPLOYEES_COUNT_WITH_COMPANY -> seeEmployeeCountByCompany();
+                case CLEAR_LIST -> employeeStorage.clearAllEmployees();
+                default -> System.out.println("Invalid command. Please try again.");
             }
         }
     }
@@ -130,5 +135,36 @@ public class EmployeeDemo implements Commands {
         }
     }
 
+    private static void searchEmployeeByAboveSalary() {
+        System.out.println("Please input salary range");
+        String salary = scanner.nextLine();
+        if (salary != null && !salary.isEmpty()) {
+            try {
+                double range = Double.parseDouble(salary);
+                if (range > 0) {
+                    employeeStorage.printEmployeesWithSalaryAbove(range);
+                } else {
+                    System.out.println("Invalid input. Please enter a valid number");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number");
+            }
+        }
+    }
+
+    private static void searchEmployeeWithMaxSalary() {
+        Employee employee = employeeStorage.findEmployeeWithMaxSalary();
+        if (employee != null) {
+            System.out.println(employee);
+        }
+    }
+
+    private static void seeEmployeeCountByCompany() {
+        System.out.println("Please input company name");
+        String company = scanner.nextLine();
+        if (company != null && !company.isEmpty()) {
+            employeeStorage.countEmployeesByCompany(company);
+        }
+    }
 
 }
