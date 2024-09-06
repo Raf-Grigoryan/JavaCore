@@ -66,4 +66,43 @@ public class EmployeeStorage {
             }
         }
     }
+
+    public void printEmployeesWithSalaryAbove(double salary) {
+        for (int i = 0; i <= size; i++) {
+            if (employees[i].getSalary() >= salary) {
+                System.out.println(employees[i]);
+            }
+        }
+    }
+
+    public void countEmployeesByCompany(String company) {
+        int count = 0;
+        for (int i = 0; i <= size; i++) {
+            if (employees[i].getCompany().equals(company)) {
+                count++;
+            }
+        }
+        System.out.println("Employees count in " + company + " with " + count);
+    }
+
+    public Employee findEmployeeWithMaxSalary() {
+        if (size > -1) {
+            Employee maxSalaryEmployee = employees[0];
+            for (int i = 1; i <= size; i++) {
+                if (employees[i].getSalary() > maxSalaryEmployee.getSalary()) {
+                    maxSalaryEmployee = employees[i];
+                }
+            }
+        } else {
+            System.out.println("Employee list is empty!");
+        }
+        return null;
+    }
+
+    public void clearAllEmployees() {
+        Employee[] tmp = new Employee[10];
+        employees = tmp;
+        size = -1;
+    }
+
 }
