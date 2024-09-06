@@ -29,6 +29,7 @@ public class EmployeeStorage {
                 return employees[i];
             }
         }
+
         return null;
     }
 
@@ -36,6 +37,32 @@ public class EmployeeStorage {
         for (int i = 0; i <= size; i++) {
             if (employees[i].getCompany().equals(companyName)) {
                 System.out.println(employees[i]);
+            }
+        }
+    }
+
+    public void searchEmployeeBySalary(double minSalary, double maxSalary) {
+        if (minSalary < maxSalary) {
+            for (int i = 0; i <= size; i++) {
+                if (employees[i].getSalary() >= minSalary && employees[i].getSalary() <= maxSalary) {
+                    System.out.println(employees[i]);
+                }
+            }
+        } else {
+            System.out.println("The range does not match");
+        }
+    }
+
+    public void deleteById(String id) {
+        for (int i = 0; i <= size; i++) {
+            if (employees[i].getEmployeeId().equals(id)) {
+                for (int j = i; j < size; j++) {
+                    employees[j] = employees[j + 1];
+                }
+                employees[size] = null;
+                size--;
+                System.out.println("Employee with ID " + id + " has been deleted.");
+                break;
             }
         }
     }

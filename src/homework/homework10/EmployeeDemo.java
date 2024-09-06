@@ -1,6 +1,7 @@
 package homework.homework10;
 
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class EmployeeDemo implements Commands {
@@ -23,6 +24,9 @@ public class EmployeeDemo implements Commands {
                 case ADD_EMPLOYEE -> addEmployee();
                 case SEARCH_BY_ID -> searchByID();
                 case SEARCH_BY_COMPANY -> searchByCompany();
+                case SEARCH_BY_SALARY -> searchBySalary();
+                case UPDATE_BY_ID -> updateEmployeeById();
+                case DELETE_BY_ID -> deleteById();
             }
         }
     }
@@ -60,4 +64,72 @@ public class EmployeeDemo implements Commands {
         String company = scanner.nextLine();
         employeeStorage.searchEmployeeByCompanyName(company);
     }
+
+    private static void searchBySalary() {
+        try {
+            System.out.println("Please input min range salary");
+            double minSalary = Double.parseDouble(scanner.nextLine());
+            System.out.println("Please input max range salary");
+            double maxSalary = Double.parseDouble(scanner.nextLine());
+            employeeStorage.searchEmployeeBySalary(minSalary, maxSalary);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number");
+        }
+    }
+
+    private static void updateEmployeeById() {
+        System.out.println("Please input employee ID");
+        String id = scanner.nextLine();
+        if (id != null && !id.isEmpty()) {
+            Employee employee = employeeStorage.searchEmployeeById(id);
+            System.out.println("Please input employee new name or skip by pressing enter");
+            String name = scanner.nextLine();
+            System.out.println("Please input employee new surname or skip by pressing enter");
+            String surname = scanner.nextLine();
+            System.out.println("Please input employee new company or skip by pressing enter");
+            String company = scanner.nextLine();
+            System.out.println("Please input employee new position or skip by pressing enter");
+            String position = scanner.nextLine();
+            System.out.println("Please input employee new salary or skip by pressing enter");
+            String salary = scanner.nextLine();
+
+            if (name != null && !name.isEmpty()) {
+                employee.setName(name);
+            }
+            if (surname != null && !surname.isEmpty()) {
+                employee.setSurname(surname);
+            }
+            if (position != null && !position.isEmpty()) {
+                employee.setPosition(position);
+            }
+            if (company != null && !company.isEmpty()) {
+                employee.setCompany(company);
+            }
+            if (salary != null && !salary.isEmpty()) {
+                try {
+                    double newSalary = Double.parseDouble(salary);
+                    employee.setSalary(newSalary);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a valid number");
+                }
+            }
+        } else {
+            System.out.println("Employee does not exist!");
+        }
+    }
+
+    private static void deleteById() {
+        System.out.println("Please input employee id");
+        String employeeId = scanner.nextLine();
+        if (employeeId != null && !employeeId.isEmpty()) {
+            if (employeeStorage.searchEmployeeById(employeeId) != null) {
+            employeeStorage.deleteById(employeeId);
+            }else {
+                System.out.println("Employee does not exist!");
+            }
+        }
+    }
+
+
+
 }
