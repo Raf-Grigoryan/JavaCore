@@ -28,7 +28,7 @@ public class EmployeeDemo implements Commands {
                 case UPDATE_BY_ID -> updateEmployeeById();
                 case DELETE_BY_ID -> deleteById();
                 case EMPLOYEES_WITH_SALARY_ABOVE -> searchEmployeeByAboveSalary();
-                case Employee_WITH_MAX_SALARY -> searchEmployeeWithMaxSalary();
+                case EMPLOYEE_WITH_MAX_SALARY ->  searchEmployeeWithMaxSalary();
                 case EMPLOYEES_COUNT_WITH_COMPANY -> seeEmployeeCountByCompany();
                 case CLEAR_LIST -> employeeStorage.clearAllEmployees();
                 default -> System.out.println("Invalid command. Please try again.");
