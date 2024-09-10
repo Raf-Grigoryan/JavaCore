@@ -33,7 +33,6 @@ public class CardServiceImpl implements CardService, CardNumbers {
 
     @Override
     public boolean transferMoney(Card fromCard, String toCardNumber, double amount) {
-
         Card recipient = getCardByCardNumber(toCardNumber);
         if (recipient != null && fromCard.getBalance() >= amount) {
             fromCard.setBalance(fromCard.getBalance() - amount);
