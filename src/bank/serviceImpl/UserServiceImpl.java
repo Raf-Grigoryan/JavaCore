@@ -67,14 +67,4 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
-    @Override
-    public User getUserByUsername(String login) {
-        for (User user : users) {
-            if (user.getLogin().equals(login)) {
-                return user;
-            }
-        }
-        return null;
-    }
 }

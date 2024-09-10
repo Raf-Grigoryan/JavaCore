@@ -8,7 +8,6 @@ public interface UserService {
 
     boolean deleteUserById(String id);
 
-   // User updateUser(User user);
 
     void linkACard(String cardId);
 
@@ -16,7 +15,7 @@ public interface UserService {
 
     User loginUser(String login, String password);
 
-    // void changeUserType(UserType userType);
+
     User getUserByLogin(String login);
-    User getUserByUsername(String login);
+
 }

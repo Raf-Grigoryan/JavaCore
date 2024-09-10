@@ -1,7 +1,6 @@
 package bank;
 
 
-import bank.model.CurrentUser;
 import bank.model.card.Card;
 import bank.model.card.Card_Type;
 import bank.model.user.User;
