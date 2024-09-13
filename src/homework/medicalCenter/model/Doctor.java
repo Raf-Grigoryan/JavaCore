@@ -7,7 +7,7 @@ public class Doctor extends Person {
     private String email;
     private String profession;
 
-    public  Doctor(){
+    public Doctor() {
 
     }
 
@@ -49,7 +49,8 @@ public class Doctor extends Person {
 
     @Override
     public String toString() {
-        return "Doctor{" +
+
+        return super.toString() + "Doctor{" +
                 "email='" + email + '\'' +
                 ", profession='" + profession + '\'' +
                 '}';
