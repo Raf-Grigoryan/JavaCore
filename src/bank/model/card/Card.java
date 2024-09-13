@@ -6,7 +6,7 @@ public class Card {
     private String id;
     private String cardNumber;
     private String pin;
-    private Card_Type cardType;
+    private CardType cardType;
     private boolean active = true;
     private double balance;
     private String userId;
@@ -15,7 +15,7 @@ public class Card {
 
     }
 
-    public Card( String pin, Card_Type cardType, String userId) {
+    public Card(String pin, CardType cardType, String userId) {
         this.pin = pin;
         this.cardType = cardType;
         this.userId = userId;
@@ -45,11 +45,11 @@ public class Card {
         this.pin = pin;
     }
 
-    public Card_Type getCardType() {
+    public CardType getCardType() {
         return cardType;
     }
 
-    public void setCardType(Card_Type cardType) {
+    public void setCardType(CardType cardType) {
         this.cardType = cardType;
     }
 

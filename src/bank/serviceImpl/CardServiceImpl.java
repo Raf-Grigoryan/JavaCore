@@ -1,7 +1,7 @@
 package bank.serviceImpl;
 
 import bank.model.card.Card;
-import bank.model.card.Card_Type;
+import bank.model.card.CardType;
 import bank.service.CardService;
 import bank.util.CardNumbers;
 
@@ -85,7 +85,7 @@ public class CardServiceImpl implements CardService, CardNumbers {
     }
 
     public void printPaymentSystems() {
-        for (Card_Type value : Card_Type.values()) {
+        for (CardType value : CardType.values()) {
             System.out.println(value.name());
         }
     }

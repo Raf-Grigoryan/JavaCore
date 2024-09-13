@@ -2,7 +2,7 @@ package bank;
 
 
 import bank.model.card.Card;
-import bank.model.card.Card_Type;
+import bank.model.card.CardType;
 import bank.model.user.User;
 import bank.service.CardService;
 import bank.service.UserService;
@@ -117,7 +117,7 @@ public class BankDemo implements BankCommands {
                 System.out.println("Please input payment systems");
                 cardService.printPaymentSystems();
                 String paymentSystem = scanner.nextLine();
-                card = cardService.add(new Card(pinCard, Card_Type.valueOf(paymentSystem), currentUser.getId()));
+                card = cardService.add(new Card(pinCard, CardType.valueOf(paymentSystem.toUpperCase()), currentUser.getId()));
                 System.out.println("Card successfully added!");
             } else {
                 System.out.println("Invalid Pin");
@@ -169,7 +169,7 @@ public class BankDemo implements BankCommands {
                     System.out.println("Invalid symbol please try again!");
                 }
             }
-        }else {
+        } else {
             System.out.println("Create card!");
         }
     }

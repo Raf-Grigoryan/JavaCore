@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUserById(String id) {
         for (User user : users) {
             if (user.getId().equals(id)) {
+                users.remove(user);
                 return true;
             }
 

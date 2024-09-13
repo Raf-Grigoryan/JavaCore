@@ -1,5 +1,5 @@
 package bank.model.card;
 
-public enum Card_Type {
+public enum CardType {
     VISA, MASTER, AMERICAN_EXPRESS
 }
