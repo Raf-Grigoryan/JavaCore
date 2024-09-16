@@ -123,7 +123,7 @@ public class MedicalStorage {
                 Patient patient = (Patient) persons[i];
                 if (patient.getDoctor().getId().equals(doctor.getId())) {
                     long timeDifference = Math.abs(patient.getRegisterDate().getTime() - date.getTime());
-                    if (timeDifference < 30 * 60 * 1000) { // Разница меньше 30 минут
+                    if (timeDifference < 30 * 60 * 1000) {
                         return false;
                     }
                 }
