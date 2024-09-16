@@ -1,13 +1,16 @@
 package homework.medicalCenter;
 
 import homework.homework9.Commands;
+import homework.medicalCenter.exception.TimeNotAllowedException;
 import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
+import homework.medicalCenter.model.ProfessionType;
 import homework.medicalCenter.storage.MedicalStorage;
 import homework.medicalCenter.util.DateUtil;
 import homework.medicalCenter.util.MedicalCommands;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -55,7 +58,7 @@ public class MedicalCenterDemo implements MedicalCommands {
                 String surname = doctorStr[1];
                 String phone = doctorStr[2];
                 String profession = doctorStr[3];
-                medicalStorage.add(new Doctor(id, name, surname, email, phone, profession));
+                medicalStorage.add(new Doctor(id, name, surname, email, phone, ProfessionType.valueOf(profession.toUpperCase())));
             } else {
                 System.out.println("Invalid Doctor Information please try again!");
             }
@@ -112,7 +115,7 @@ public class MedicalCenterDemo implements MedicalCommands {
                 doctor.setPhoneNumber(phoneNumber);
             }
             if (!profession.isEmpty()) {
-                doctor.setProfession(profession);
+                doctor.setProfessionType(ProfessionType.valueOf(profession.toUpperCase()));
             }
         } else {
             System.out.println("Doctor does not exist!!!");
@@ -128,8 +131,14 @@ public class MedicalCenterDemo implements MedicalCommands {
             Doctor doctor = medicalStorage.getDoctorById(doctorId);
             if (doctor != null) {
                 try {
-                    System.out.println("Please input registration date 09-10-2000");
-                    String date = scanner.nextLine();
+                    System.out.println("Please input registration date 09-10-2000 10:00");
+                    String dateStr = scanner.nextLine();
+                    Date date = DateUtil.stringToDateByTime(dateStr);
+
+                    if (!medicalStorage.isTimeAvailable(date, doctor)) {
+                        throw new TimeNotAllowedException("The selected time is not available. Please choose another time.");
+                    }
+
                     System.out.println("Please input patient name");
                     String name = scanner.nextLine();
                     System.out.println("Please input patient surname");
@@ -137,9 +146,12 @@ public class MedicalCenterDemo implements MedicalCommands {
                     System.out.println("Please input phone number");
                     String phoneNumber = scanner.nextLine();
                     String patientId = "P" + patientIdGenerator.getAndIncrement();
-                    medicalStorage.add(new Patient(patientId, name, surname, phoneNumber, doctor, DateUtil.stringToDate(date)));
+                    medicalStorage.add(new Patient(patientId, name, surname, phoneNumber, doctor, date));
+
                 } catch (ParseException e) {
-                    System.out.println("Error please input date in this format 09-10-2000");
+                    System.out.println("Error: Please input date in this format 09-10-2000 10:00");
+                } catch (TimeNotAllowedException e) {
+                    System.out.println(e.getMessage());
                 }
             } else {
                 System.out.println("Invalid doctor id please try again");

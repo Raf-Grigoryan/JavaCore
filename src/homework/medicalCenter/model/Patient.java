@@ -54,7 +54,7 @@ public class Patient extends Person {
     public String toString() {
         return super.toString() + "Patient{" +
                 "doctor=" + doctor +
-                ", registerDate=" + DateUtil.dateToString(registerDate) +
+                ", registerDate=" + DateUtil.dateTimeToString(registerDate) +
                 '}';
     }
 }

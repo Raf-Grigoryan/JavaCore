@@ -3,6 +3,9 @@ package homework.medicalCenter.storage;
 import homework.medicalCenter.model.Doctor;
 import homework.medicalCenter.model.Patient;
 import homework.medicalCenter.model.Person;
+import homework.medicalCenter.model.ProfessionType;
+
+import java.util.Date;
 
 
 public class MedicalStorage {
@@ -45,7 +48,7 @@ public class MedicalStorage {
     public void searchDoctorByProfession(String profession) {
         for (int i = 0; i < size; i++) {
             if (persons[i] instanceof Doctor) {
-                if (((Doctor) persons[i]).getProfession().equals(profession)) {
+                if (((Doctor) persons[i]).getProfessionType().equals(ProfessionType.valueOf(profession.toUpperCase()))) {
                     System.out.println((Doctor) persons[i]);
                 }
             }
@@ -106,13 +109,27 @@ public class MedicalStorage {
         }
         return count;
     }
-    public void printAllDoctors(){
+
+    public void printAllDoctors() {
         for (int i = 0; i < size; i++) {
-            if (persons[i] instanceof Doctor){
+            if (persons[i] instanceof Doctor) {
                 System.out.println((Doctor) persons[i]);
             }
         }
     }
-
+    public boolean isTimeAvailable(Date date, Doctor doctor) {
+        for (int i = 0; i < size; i++) {
+            if (persons[i] instanceof Patient) {
+                Patient patient = (Patient) persons[i];
+                if (patient.getDoctor().getId().equals(doctor.getId())) {
+                    long timeDifference = Math.abs(patient.getRegisterDate().getTime() - date.getTime());
+                    if (timeDifference < 30 * 60 * 1000) { // Разница меньше 30 минут
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
 }

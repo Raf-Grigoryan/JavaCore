@@ -5,16 +5,16 @@ import java.util.Objects;
 
 public class Doctor extends Person {
     private String email;
-    private String profession;
+    private ProfessionType professionType;
 
     public Doctor() {
 
     }
 
-    public Doctor(String id, String name, String surname, String phoneNumber, String email, String profession) {
+    public Doctor(String id, String name, String surname, String phoneNumber, String email, ProfessionType professionType) {
         super(id, name, surname, phoneNumber);
         this.email = email;
-        this.profession = profession;
+        this.professionType = professionType;
     }
 
     public String getEmail() {
@@ -25,12 +25,12 @@ public class Doctor extends Person {
         this.email = email;
     }
 
-    public String getProfession() {
-        return profession;
+    public ProfessionType getProfessionType() {
+        return professionType;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
+    public void setProfessionType(ProfessionType professionType) {
+        this.professionType = professionType;
     }
 
     @Override
@@ -39,20 +39,19 @@ public class Doctor extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Doctor doctor = (Doctor) o;
-        return Objects.equals(email, doctor.email) && Objects.equals(profession, doctor.profession);
+        return Objects.equals(email, doctor.email) && professionType == doctor.professionType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), email, profession);
+        return Objects.hash(super.hashCode(), email, professionType);
     }
 
     @Override
     public String toString() {
-
         return super.toString() + "Doctor{" +
                 "email='" + email + '\'' +
-                ", profession='" + profession + '\'' +
+                ", professionType=" + professionType +
                 '}';
     }
 }
