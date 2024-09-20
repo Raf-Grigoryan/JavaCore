@@ -1,24 +1,23 @@
-package bank.model.user;
+package homework.market.model.user;
 
 import java.util.Objects;
 
 public class User {
     private String id;
     private String name;
-    private String surname;
-    private String login;
+    private String email;
     private String password;
-    private int age;
+    private UserType userType;
 
     public User() {
-
     }
 
-    public User(String name, String surname, String login, String password, int age) {
+    public User(String id, String name, String email, String password, UserType userType) {
+        this.id = id;
         this.name = name;
-        this.surname = surname;
-        this.login = login;
+        this.email = email;
         this.password = password;
+        this.userType = userType;
     }
 
     public String getId() {
@@ -37,20 +36,12 @@ public class User {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -61,13 +52,12 @@ public class User {
         this.password = password;
     }
 
-
-    public int getAge() {
-        return age;
+    public UserType getUserType() {
+        return userType;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     @Override
@@ -75,12 +65,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return age == user.age && Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(login, user.login) && Objects.equals(password, user.password);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && userType == user.userType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, login, password, age);
+        return Objects.hash(id, name, email, password, userType);
     }
 
     @Override
@@ -88,8 +78,8 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", userType=" + userType +
                 '}';
     }
 }

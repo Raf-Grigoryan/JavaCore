@@ -111,8 +111,7 @@ public class MedicalStorage {
     }
 
     public void printAllDoctors() {
-        for (int i = 0; i < size; i++) {
-            if (persons[i] instanceof Doctor) {
+        for (int i = 0; i < size; i++) {if (persons[i] instanceof Doctor) {
                 System.out.println((Doctor) persons[i]);
             }
         }
@@ -133,3 +132,4 @@ public class MedicalStorage {
     }
 
 }
+      
