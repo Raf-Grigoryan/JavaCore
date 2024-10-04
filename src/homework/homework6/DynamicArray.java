@@ -7,6 +7,7 @@ public class DynamicArray {
     //սա մեր մասիվի մեջ ավելացված էլեմենտների քանակն է
     private int size = 0;
 
+
     //ստուգել եթե մասիվի մեջ տեղ չկա-> կանչել extend()
     //և ավելացնենք
     public void add(int value) {
